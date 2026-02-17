@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webgame-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: webgame
+  template:
+    metadata:
+      labels:
+        app: webgame
+    spec:
+      containers:
+        - name: webgame
+          image: webgame:v1
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
